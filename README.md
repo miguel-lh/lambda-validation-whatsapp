@@ -4,10 +4,10 @@
 
 Set this env variables in lambda
 
-`DB_HOST`: Host of database
-`DB_NAME`: Database username
-`DB_PASSWORD`: Database password
-`DB_PORT`: Port of database
+- `DB_HOST`: Host of database
+- `DB_NAME`: Database username
+- `DB_PASSWORD`: Database password
+- `DB_PORT`: Port of database
 
 ## Usage
 
