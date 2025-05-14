@@ -20,6 +20,10 @@ Conect with API service:
 }
 ```
 
+## Workflow
+
+![](https://github.com/user-attachments/assets/7642eb72-7bfe-4db3-8a2f-c97c2de9a914)
+
 ## Related
 
 [lambda-send-whatsapp](https://github.com/miguel-lh/lambda-send-whatsapp)
