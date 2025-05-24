@@ -1,9 +1,9 @@
-name: Deploy Lambda to Production
+name: Deploy Lambda to Development
 
 on:
   push:
     branches:
-      - main
+      - development
 
 jobs:
   deploy:
@@ -16,26 +16,25 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: "3.13"
+          python-version: "3.9"
 
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
+          npm install -g serverless
 
-      - name: Run tests
-        run: |
-          pytest tests/
+      - name: Run Tests
+        run: pytest tests/
 
-      - name: Package and Deploy to Production Lambda
+      - name: Package and Deploy to Development Lambda
         run: |
           bash scripts/package.sh
           aws lambda update-function-code \
             --function-name $AWS_LAMBDA_FUNCTION_NAME \
             --zip-file fileb://lambda_function.zip \
             --region $AWS_REGION
-
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_PROD_REGION }}
-          AWS_LAMBDA_FUNCTION_NAME: ${{ secrets.AWS_PROD_LAMBDA_FUNCTION_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEV_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEV_REGION }}
+          AWS_LAMBDA_FUNCTION_NAME: ${{ secrets.AWS_DEV_LAMBDA_FUNCTION_NAME }}
