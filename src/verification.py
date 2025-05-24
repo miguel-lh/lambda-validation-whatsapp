@@ -13,8 +13,6 @@ def verify_code(conn, number, code, contrato_id) -> bool:
 
         result = cur.fetchone()
 
-        print(f"resultado: {result}")
-
         # No está en proceso de verificación
         if not result:
             return False
