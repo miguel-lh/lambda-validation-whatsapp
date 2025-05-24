@@ -23,7 +23,7 @@ def lambda_handler(event, context):
 
     number: str = body.get("phone-number")
     code: str = body.get("code")
-    contrato_id: str = body.get("cotizacion")
+    contrato_id: str = body.get("contrato")
 
     if not number:
         return error_response(400, "Falta el 'phone-number' en la solicitud")
