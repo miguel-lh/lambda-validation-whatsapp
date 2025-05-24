@@ -15,7 +15,7 @@ def lambda_handler(event, context):
 
     number: str = body.get("phone-number")
     code: str = body.get("code")
-    cotizacion: str = body.get("cotizacion")
+    contrato: str = body.get("cotizacion")
 
     if not number:
         return error_response(400, "Falta el 'phone-number' en la solicitud")
@@ -23,12 +23,12 @@ def lambda_handler(event, context):
     if not code:
         return error_response(400, "Falta el 'code' en la solicitud")
 
-    if not cotizacion:
-        return error_response(400, "Falta la 'cotizacion' en la solicitud")
+    if not contrato:
+        return error_response(400, "Falta el 'contrato' en la solicitud")
 
     try:
         conn = get_db_connection()
-        is_correct = verify_code(conn, number, code, cotizacion)
+        is_correct = verify_code(conn, number, code, contrato)
 
         if not is_correct:
             return error_response(
