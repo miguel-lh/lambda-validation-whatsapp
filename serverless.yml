@@ -1,0 +1,11 @@
+service: lambda-send-whatsapp-service
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.13
+  region: us-west-2
+
+functions:
+  myFunction:
+    handler: src/handler.lambda_handler
