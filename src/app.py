@@ -46,12 +46,12 @@ def lambda_handler(event, context):
         if not contrato_id:
             return error_response(400, "El contrato no existe.")
 
-        is_verified = process_already_verified(conn, number, contrato_id)
-        if is_verified:
-            return error_response(
-                200,
-                f"El número '{number}' con contrato '{contrato_slug}' ya fue verificado",
-            )
+        # is_verified = process_already_verified(conn, number, contrato_id)
+        # if is_verified:
+        #     return error_response(
+        #         200,
+        #         f"El número '{number}' con contrato '{contrato_slug}' ya fue verificado",
+        #     )
 
         is_correct = verify_code(conn, number, code, contrato_id)
         if not is_correct:
