@@ -52,5 +52,6 @@ def verify_code(conn, number, code, contrato_id) -> bool:
                 contrato_id,
             ),
         )
+        conn.commit()
 
         return True
