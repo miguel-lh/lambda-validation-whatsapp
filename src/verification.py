@@ -22,6 +22,7 @@ def process_already_verified(conn, number, contrato_id) -> bool:
 # Verifica si el codigo es correcto
 def verify_code(conn, number, code, contrato_id) -> bool:
     with conn.cursor() as cur:
+
         cur.execute("""
             SELECT otp_code
             FROM whatsapp_verification_whatsappverification

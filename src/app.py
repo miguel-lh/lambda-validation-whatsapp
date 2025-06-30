@@ -24,6 +24,7 @@ def lambda_handler(event, context):
 
     number: str = body.get("phone-number")
     code: str = body.get("code")
+
     contrato_slug: str = body.get("contrato")
 
     if not number:
